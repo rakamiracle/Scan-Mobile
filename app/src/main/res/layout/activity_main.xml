@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp">
+
+        <!-- Header with Gradient Background -->
+        <View
+            android:id="@+id/headerBackground"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@drawable/gradient_header"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- App Title -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SChan AIBOT"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="@color/surface"
+            android:letterSpacing="0.05"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="48dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <!-- Subtitle -->
+        <TextView
+            android:id="@+id/subtitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your AI Companion"
+            android:textSize="14sp"
+            android:textColor="@color/surface"
+            android:alpha="0.9"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@id/titleText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <!-- Face Card Container with FAB -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/faceCardContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="140dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/faceCard"
+                android:layout_width="0dp"
+                android:layout_height="320dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="12dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/surface"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <!-- Face View -->
+                    <com.example.buddyrobot.FaceView
+                        android:id="@+id/faceView"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_margin="8dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/statusContainer"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <!-- Status Container -->
+                    <LinearLayout
+                        android:id="@+id/statusContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:background="@drawable/status_background"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent">
+
+                        <View
+                            android:id="@+id/statusDot"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:background="@drawable/status_dot"
+                            android:layout_marginEnd="8dp"/>
+
+                        <TextView
+                            android:id="@+id/statusText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Disconnected"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_secondary"
+                            android:fontFamily="sans-serif-medium"/>
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Floating Action Button for Minimize/Maximize -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabMinimize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:tint="@android:color/white"
+                app:backgroundTint="@color/pink_primary"
+                app:fabSize="normal"
+                app:elevation="6dp"
+                app:layout_constraintTop_toTopOf="@id/faceCard"
+                app:layout_constraintEnd_toEndOf="@id/faceCard"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Connect Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/connectButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:text="Connect to SChan AIBOT"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.02"
+            app:icon="@android:drawable/stat_sys_data_bluetooth"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:cornerRadius="16dp"
+            app:backgroundTint="@color/pink_primary"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/faceCardContainer"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <!-- Movement Control Section -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/movementCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="@color/surface"
+            app:layout_constraintTop_toBottomOf="@id/connectButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Movement"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="16dp"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnHeadUp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:text="↑"
+                        android:textSize="24sp"
+                        app:cornerRadius="16dp"
+                        app:strokeColor="@color/pink_light"
+                        app:strokeWidth="2dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnHeadLeft"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:text="←"
+                        android:textSize="24sp"
+                        app:cornerRadius="16dp"
+                        app:strokeColor="@color/pink_light"
+                        app:strokeWidth="2dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/btnHeadUp"
+                        app:layout_constraintRight_toLeftOf="@id/btnHeadCenter"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnHeadCenter"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:text="⊙"
+                        android:textSize="24sp"
+                        app:cornerRadius="16dp"
+                        app:backgroundTint="@color/pink_light"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/btnHeadUp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnHeadRight"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:text="→"
+                        android:textSize="24sp"
+                        app:cornerRadius="16dp"
+                        app:strokeColor="@color/pink_light"
+                        app:strokeWidth="2dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/btnHeadUp"
+                        app:layout_constraintLeft_toRightOf="@id/btnHeadCenter"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnHeadDown"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:text="↓"
+                        android:textSize="24sp"
+                        app:cornerRadius="16dp"
+                        app:strokeColor="@color/pink_light"
+                        app:strokeWidth="2dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/btnHeadCenter"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Expression Control Section -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/expressionCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:strokeWidth="0dp"
+            app:cardBackgroundColor="@color/surface"
+            app:layout_constraintTop_toBottomOf="@id/movementCard"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expressions"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Basic Emotions Row 1 -->
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="false"
+                    app:chipSpacing="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnHappy"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="😊 Happy"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnSad"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="😢 Sad"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnSurprise"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="😲 Surprise"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- Emotions Row 2 -->
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:singleSelection="false"
+                    app:chipSpacing="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnAngry"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="😠 Angry"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnLove"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="😍 Love"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnSleepy"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="😴 Sleepy"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- Emotions Row 3 -->
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:singleSelection="false"
+                    app:chipSpacing="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnExcited"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="🤩 Excited"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnConfused"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="😕 Confused"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnCool"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="😎 Cool"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <!-- Emotions Row 4 -->
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:singleSelection="false"
+                    app:chipSpacing="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnShy"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="🙈 Shy"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnThinking"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="🤔 Thinking"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btnLaughing"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="😂 Laughing"
+                        android:textSize="15sp"
+                        app:chipBackgroundColor="@color/pink_light"
+                        app:chipStrokeWidth="0dp"/>
+
+                </com.google.android.material.chip.ChipGroup>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

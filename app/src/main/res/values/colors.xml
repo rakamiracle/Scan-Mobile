@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Premium Pink Palette -->
+    <color name="pink_primary">#FF6B9D</color>
+    <color name="pink_dark">#E85D8A</color>
+    <color name="pink_light">#FFB3D9</color>
+    <color name="pink_accent">#FF8FB3</color>
+
+    <!-- Neutrals -->
+    <color name="background">#FFF5F9</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_elevated">#FFFAFC</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1A051D</color>
+    <color name="text_secondary">#6B4D6E</color>
+    <color name="text_tertiary">#9B7F9E</color>
+
+    <!-- Status -->
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+    <color name="warning">#FF9800</color>
+
+    <!-- Gradients -->
+    <color name="gradient_start">#FFB3D9</color>
+    <color name="gradient_end">#FF6B9D</color>
+</resources>
